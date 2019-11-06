@@ -35,6 +35,14 @@ body {
   font-size: 10px;
 }
 
+button{
+  margin-top: 20px;
+  height: 40px;
+  width: 80px;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 10px;
+}
+
 .clicked{
   background-color: lightgrey;
   text-align: center;
@@ -50,6 +58,14 @@ body {
 
 .mine-exposed{
   background-image: url(../images/mine.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: none;
+}
+
+.mine-exposed-win{
+  background-image: url(../images/solider2.png);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;

@@ -1,44 +1,70 @@
 function setupGame() {
-  const width = 10
-  const cells = []
   const grid = document.querySelector('.grid')
+  const width = 10
+  let cells = []
   let numberMines = 0
   let position = 0
   let mineCells = []
 
-  for (let i = 0; i < width ** 2; i++) {
-    const cell = document.createElement('div')
-    cells.push(cell)
-    grid.appendChild(cell)
+  createGrid()
 
-    const mine = document.createAttribute('data-mine')
-    mine.value = 'false'
-    cell.setAttributeNode(mine)
+  function createGrid() {
+    // grid.innerHTML = ''
+    for (let i = 0; i < width ** 2; i++) {
+      const cell = document.createElement('div')
+      cells.push(cell)
+      grid.appendChild(cell)
 
-    cell.addEventListener('click', function () {
-      clickCell(this)
-      // console.log(this)
-    })
-    cell.addEventListener('mousedown', (event) => {
-      if (event.button === 2) {
-        // cell.style.backgroundImage = 'url(images/Minesweeper_flag.png)'
-        cell.classList.toggle('right-click')
-      }
-    })
+      const mine = document.createAttribute('data-mine')
+      mine.value = 'false'
+      cell.setAttributeNode(mine)
 
-  }
+      cell.addEventListener('click', function () {
+        clickCell(this)
+        // console.log(this)
+      })
+      cell.addEventListener('mousedown', (event) => {
+        if (event.button === 2) {
+          // cell.style.backgroundImage = 'url(images/Minesweeper_flag.png)'
+          cell.classList.toggle('right-click')
+        }
+      })
 
-  for (let i = 0; i < 16; i++) {
-    mineCells = cells[Math.floor(Math.random() * 100)]
-    mineCells.setAttribute('data-mine', 'true')
-    // mineCells.style.backgroundColor = 'red'
+    }
+
+    for (let i = 0; i < 16; i++) {
+      mineCells = cells[Math.floor(Math.random() * (width ** 2))]
+      mineCells.setAttribute('data-mine', 'true')
+      // mineCells.style.backgroundColor = 'red'
+    }
   }
 
   function showMines() {
-    for (var i = 0; i < width ** 2; i++){
-      if (cells[i].getAttribute('data-mine') === 'true'){
+    for (var i = 0; i < width ** 2; i++) {
+      if (cells[i].getAttribute('data-mine') === 'true') {
         cells[i].className = 'mine-exposed'
       }
+    }
+  }
+
+  function showMinesWin() {
+    for (var i = 0; i < width ** 2; i++) {
+      if (cells[i].getAttribute('data-mine') === 'true') {
+        cells[i].className = 'mine-exposed-win'
+      }
+    }
+  }
+
+  function checkForCompletion() {
+    let gameComplete = true
+    for (var i = 0; i < width ** 2; i++) {
+      if (cells[i].getAttribute('data-mine') === 'false' && cells[i].innerHTML === '') {
+        gameComplete = false
+      }
+    }
+    if (gameComplete) {
+      showMinesWin()
+      window.alert('You win!')
     }
   }
 
@@ -53,6 +79,7 @@ function setupGame() {
     } else {
       // console.log(position)
       checkCells(position)
+      checkForCompletion()
       // cell.innerHTML = numberMines
 
       // const positionsToOpen = [
@@ -184,6 +211,17 @@ function setupGame() {
     }
     numberMines = 0
   }
+
+  const button = document.querySelector('button')
+  console.log(grid)
+
+
+  function reset() {
+    grid.innerHTML = ''
+    cells = []
+    createGrid()
+  }
+  button.addEventListener('click', reset)
 
 
 
