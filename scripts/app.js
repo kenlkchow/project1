@@ -51,7 +51,7 @@ function setupGame() {
         if (cells[randomNum].getAttribute('data-mine') === 'false') {
           mineCells = cells[randomNum]
           mineCells.setAttribute('data-mine', 'true')
-          mineCells.style.backgroundColor = 'red'
+          // mineCells.style.backgroundColor = 'red'
           mineCells.setAttribute('id', 'mine')
           break
         } 
