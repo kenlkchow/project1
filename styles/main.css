@@ -10,17 +10,18 @@ body {
   margin: 0;
   flex-direction: column;
   font-family: 'Press Start 2P', cursive;
+  background-color: white;
 }
 
 .grid {
   align-items: center;
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 10px 0 20px 0 rgba(0, 0, 0, 0.2);
   display: flex;
   flex-wrap: wrap;
-  height: 100%;
   justify-content: center;
-  height: 450px;
-  width: 450px;
+  height: 100%;
+  width: 50%;
+  background-color: whitesmoke;
 }
 
 .grid div {
@@ -73,5 +74,41 @@ button{
 }
 
 header{
-  margin-bottom: 15px;
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h4{
+  margin: 0 auto;
+}
+
+main{
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  height: 50vw;
+}
+
+.empty{
+  width: 25%
+}
+
+#board{
+  border: 3px solid darkslategrey;
+  height: 40%;
+  margin-left: 4vw;
+  margin-right: 2vw;
+  margin-top: 5vw;
+  background-color: lightgrey;
+}
+
+#instructions{
+  font-size: 13px;
+  font-family: 'Playfair Display SC', serif;
+  margin: 3px;
+  line-height: 20px;
+  text-emphasis: bold;
 }

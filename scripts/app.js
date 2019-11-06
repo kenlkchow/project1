@@ -2,11 +2,14 @@ function setupGame() {
   const grid = document.querySelector('.grid')
   const width = 10
   let cells = []
+  const createMines = 16
   let numberMines = 0
   let position = 0
   let mineCells = []
 
+
   createGrid()
+  displayNumberMinesLeft()
 
   function createGrid() {
     // grid.innerHTML = ''
@@ -27,16 +30,26 @@ function setupGame() {
         if (event.button === 2) {
           // cell.style.backgroundImage = 'url(images/Minesweeper_flag.png)'
           cell.classList.toggle('right-click')
+          displayNumberMinesLeft()
         }
       })
 
     }
 
-    for (let i = 0; i < 16; i++) {
+    for (let i = 0; i <= createMines; i++) {
       mineCells = cells[Math.floor(Math.random() * (width ** 2))]
       mineCells.setAttribute('data-mine', 'true')
       // mineCells.style.backgroundColor = 'red'
     }
+  }
+
+  function displayNumberMinesLeft() {
+    const minesLeft = document.querySelector('#minesLeft')
+    const flags = cells.filter((element) => {
+      return element.classList.contains('right-click')
+    })
+    console.log(mineCells.length)
+    minesLeft.innerHTML = createMines - flags.length
   }
 
   function showMines() {
@@ -220,6 +233,7 @@ function setupGame() {
     grid.innerHTML = ''
     cells = []
     createGrid()
+    displayNumberMinesLeft()
   }
   button.addEventListener('click', reset)
 
