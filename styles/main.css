@@ -8,6 +8,8 @@ body {
   height: 100vh;
   justify-content: center;
   margin: 0;
+  flex-direction: column;
+  font-family: 'Press Start 2P', cursive;
 }
 
 .grid {
@@ -17,8 +19,8 @@ body {
   flex-wrap: wrap;
   height: 100%;
   justify-content: center;
-  height: 600px;
-  width: 600px;
+  height: 450px;
+  width: 450px;
 }
 
 .grid div {
@@ -30,6 +32,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 10px;
 }
 
 .clicked{
@@ -43,4 +46,16 @@ body {
   background-repeat: no-repeat;
   background-position: center;
     /* background-color: blue; */
+}
+
+.mine-exposed{
+  background-image: url(../images/mine.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: none;
+}
+
+header{
+  margin-bottom: 15px;
 }

@@ -4,6 +4,7 @@ function setupGame() {
   const grid = document.querySelector('.grid')
   let numberMines = 0
   let position = 0
+  let mineCells = []
 
   for (let i = 0; i < width ** 2; i++) {
     const cell = document.createElement('div')
@@ -27,11 +28,27 @@ function setupGame() {
 
   }
 
+  for (let i = 0; i < 16; i++) {
+    mineCells = cells[Math.floor(Math.random() * 100)]
+    mineCells.setAttribute('data-mine', 'true')
+    // mineCells.style.backgroundColor = 'red'
+  }
+
+  function showMines() {
+    for (var i = 0; i < width ** 2; i++){
+      if (cells[i].getAttribute('data-mine') === 'true'){
+        cells[i].className = 'mine-exposed'
+      }
+    }
+  }
+
+
   function clickCell(cell) {
     cell.classList.add('clicked')
     position = cells.indexOf(cell)
     if (cell.getAttribute('data-mine') === 'true') {
       //reveal the mine cell.
+      showMines()
       window.alert('game over')
     } else {
       // console.log(position)
@@ -87,12 +104,6 @@ function setupGame() {
 
   // console.log(cells.length)
 
-  for (let i = 0; i < 16; i++) {
-    const mineCells = cells[Math.floor(Math.random() * 100)]
-    mineCells.setAttribute('data-mine', 'true')
-    mineCells.style.backgroundColor = 'red'
-  }
-
 
   function checkCells(position) {
     if ((position + 1) % 10 !== 0 && position % 10 !== 0) {
@@ -108,7 +119,7 @@ function setupGame() {
       ]
       console.log('yes')
       positions.forEach((position) => {
-        if (position > 0 && position < 99 && (cells[position].getAttribute('data-mine') === 'true')) {
+        if (position >= 0 && position < width ** 2 && (cells[position].getAttribute('data-mine') === 'true')) {
           numberMines += 1
         }
       })
@@ -122,7 +133,7 @@ function setupGame() {
       ]
       console.log(positions)
       positions.forEach((position) => {
-        if (position > 0 && position < 99 && (cells[position].getAttribute('data-mine') === 'true')) {
+        if (position >= 0 && position < width ** 2 && (cells[position].getAttribute('data-mine') === 'true')) {
           numberMines += 1
           console.log(numberMines)
         }
@@ -137,7 +148,7 @@ function setupGame() {
       ]
       console.log(positions)
       positions.forEach((position) => {
-        if (position > 0 && position < 99 && (cells[position].getAttribute('data-mine') === 'true')) {
+        if (position >= 0 && position < width ** 2 && (cells[position].getAttribute('data-mine') === 'true')) {
           numberMines += 1
           console.log(numberMines)
         }
