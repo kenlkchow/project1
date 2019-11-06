@@ -35,11 +35,27 @@ function setupGame() {
       })
 
     }
+    // for (let i = 0; i < 100; i++){
+    //   let randomNum = Math.floor(Math.random() * (width ** 2))
+    //   if (cells[randomNum].getAttribute('data-mine') === 'false') {
+    //     console.log(cells[i])
+    //   }
+    // }
+    
 
-    for (let i = 0; i <= createMines; i++) {
-      mineCells = cells[Math.floor(Math.random() * (width ** 2))]
-      mineCells.setAttribute('data-mine', 'true')
-      // mineCells.style.backgroundColor = 'red'
+    for (let i = 0; i < createMines; i++) {
+      const positionNotFound = true
+      while (positionNotFound) {
+        // eslint-disable-next-line prefer-const
+        let randomNum = Math.floor(Math.random() * (width ** 2))
+        if (cells[randomNum].getAttribute('data-mine') === 'false') {
+          mineCells = cells[randomNum]
+          mineCells.setAttribute('data-mine', 'true')
+          mineCells.style.backgroundColor = 'red'
+          mineCells.setAttribute('id', 'mine')
+          break
+        } 
+      }
     }
   }
 
@@ -49,6 +65,7 @@ function setupGame() {
       return element.classList.contains('right-click')
     })
     console.log(mineCells.length)
+    console.log(flags.length)
     minesLeft.innerHTML = createMines - flags.length
   }
 
