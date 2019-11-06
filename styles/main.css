@@ -22,9 +22,25 @@ body {
 }
 
 .grid div {
-  border: 1px solid lightgrey;
+  border: 1px solid grey;
   flex-grow: 1;
   height: 10%;
   width: 10%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
+.clicked{
+  background-color: lightgrey;
+  text-align: center;
+}
+
+.right-click{
+  background-image: url(../images/Minesweeper_flag.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+    /* background-color: blue; */
+}
