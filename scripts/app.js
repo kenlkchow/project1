@@ -30,7 +30,7 @@ function setupGame() {
             // console.log(this)
           }
         } else {
-          if (event.button === 0)
+          if (event.button === 0) 
             clickCell(this)
         }
       })

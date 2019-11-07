@@ -206,6 +206,10 @@ input:checked + .slider:before {
   }
   #mobile{
     display: inline-block;
-    height: 85px; 
+    height: 75px; 
+  }
+
+  .board{
+    border: 1px solid darkslategrey;
   }
 }
