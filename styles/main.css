@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  overflow: scroll;
 }
 
 body {
@@ -97,7 +98,7 @@ main{
   width: 25%
 }
 
-#board{
+.board{
   border: 3px solid darkslategrey;
   height: 40%;
   margin-left: 4vw;
@@ -106,17 +107,27 @@ main{
   background-color: lightgrey;
 }
 
-#instructions{
-  font-size: 1.5vw;
+#mobile{
+  display: none;
+}
+
+.title{
+  font-size: 1.3vw;
+  text-align: center;
+}
+
+.instructions{
+  font-size: 1.3vw;
   font-family: 'Playfair Display SC', serif;
   margin: 3px;
   line-height: 20px;
   text-emphasis: bold;
+  margin-left: 10px;
 }
 /* The switch - the box around the slider */
 .switch {
   position: relative;
-  display: inline-block;
+  display: none;
   width: 60px;
   height: 34px;
   margin-top: 10px;
@@ -145,27 +156,27 @@ main{
 .slider:before {
   position: absolute;
   content: "";
-  height: 26px;
+  height: 24px;
   width: 26px;
-  left: 4px;
-  bottom: 4px;
+  left: 2px;
+  bottom: 0px;
   background-color: white;
   -webkit-transition: .4s;
   transition: .4s;
 }
 
 input:checked + .slider {
-  background-color: #2196F3;
+  background-color: red;
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
+  box-shadow: 0 0 1px red;
 }
 
 input:checked + .slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
+  -webkit-transform: translateX(28px);
+  -ms-transform: translateX(28px);
+  transform: translateX(28px);
 }
 
 /* Rounded sliders */
@@ -175,4 +186,26 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
+}
+
+@media only screen and (max-width: 600px){
+  .switch {
+    display: inline-block;
+    height: 24px;
+  }
+  main{
+    height: 60vw;
+    width: 100vw;
+  }
+  .instructions{
+    line-height: 10px;
+    margin-left: 3px;
+  }
+  button{
+    margin-top: 10px; 
+  }
+  #mobile{
+    display: inline-block;
+    height: 85px; 
+  }
 }

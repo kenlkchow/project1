@@ -30,7 +30,8 @@ function setupGame() {
             // console.log(this)
           }
         } else {
-          clickCell(this)
+          if (event.button === 0)
+            clickCell(this)
         }
       })
       cell.addEventListener('mousedown', (event) => {
