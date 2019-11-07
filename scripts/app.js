@@ -24,21 +24,23 @@ function setupGame() {
 
       cell.addEventListener('mousedown', function (event) {
         if (document.querySelector('input').checked === true) {
-          if (event.button === 0) {
+          if (event.button === 0 && cell.innerHTML === '') {
             cell.classList.toggle('right-click')
             displayNumberMinesLeft()
             // console.log(this)
           }
         } else {
-          if (event.button === 0) 
+          if (event.button === 0)
             clickCell(this)
         }
       })
       cell.addEventListener('mousedown', (event) => {
         if (event.button === 2) {
-          // cell.style.backgroundImage = 'url(images/Minesweeper_flag.png)'
-          cell.classList.toggle('right-click')
-          displayNumberMinesLeft()
+          if (cell.innerHTML === '') {
+            // cell.style.backgroundImage = 'url(images/Minesweeper_flag.png)'
+            cell.classList.toggle('right-click')
+            displayNumberMinesLeft()
+          }
         }
       })
 
