@@ -22,9 +22,16 @@ function setupGame() {
       mine.value = 'false'
       cell.setAttributeNode(mine)
 
-      cell.addEventListener('click', function () {
-        clickCell(this)
-        // console.log(this)
+      cell.addEventListener('mousedown', function (event) {
+        if (document.querySelector('input').checked === true) {
+          if (event.button === 0) {
+            cell.classList.toggle('right-click')
+            displayNumberMinesLeft()
+            // console.log(this)
+          }
+        } else {
+          clickCell(this)
+        }
       })
       cell.addEventListener('mousedown', (event) => {
         if (event.button === 2) {
@@ -34,6 +41,7 @@ function setupGame() {
         }
       })
 
+
     }
     // for (let i = 0; i < 100; i++){
     //   let randomNum = Math.floor(Math.random() * (width ** 2))
@@ -41,7 +49,7 @@ function setupGame() {
     //     console.log(cells[i])
     //   }
     // }
-    
+
 
     for (let i = 0; i < createMines; i++) {
       const positionNotFound = true
@@ -54,7 +62,7 @@ function setupGame() {
           // mineCells.style.backgroundColor = 'red'
           mineCells.setAttribute('id', 'mine')
           break
-        } 
+        }
       }
     }
   }
